@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import CatalogPage from './catalogpage';
 import ProductDetail from './productdetail';
+import ArduinoImg from './Images/arduino.png';
+import BantalImg from './Images/bantal.png';
 
 function App() {
   const categories = [
@@ -16,7 +18,7 @@ function App() {
       id: 1, 
       name: 'Bantal Bergambar', 
       categories: ['Home', 'All'],
-      image: 'https://images.unsplash.com/photo-1590658165737-15a047b7a3b8?w=400', 
+      image: BantalImg,
       liked: false,
       description: 'Bantal lembut dengan gambar lucu, cocok untuk dekorasi kamar dan tidur nyaman.'
     },
@@ -32,7 +34,7 @@ function App() {
       id: 3, 
       name: 'Arduino Product', 
       categories: ['Electronics', 'All'],
-      image: 'https://images.unsplash.com/photo-1507473885765-e6ed057f782c?w=400', 
+      image: ArduinoImg,  
       liked: false,
       description: 'Kit Arduino lengkap untuk eksperimen elektronik, cocok untuk pemula dan hobi.'
     },
@@ -46,9 +48,9 @@ function App() {
     },
     { 
       id: 5, 
-      name: 'Gantungan Kunci Homemade', 
+      name: 'Manik Manik Homemade', 
       categories: ['Fashion', 'All'],
-      image: 'https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=400', 
+      image: 'https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=400', 
       liked: false,
       description: 'Gantungan kunci buatan tangan, unik dan cocok dijadikan hadiah.'
     },
