@@ -69,7 +69,7 @@ function App() {
       id: 7,
       name: 'Test',
       categories:['Home','All'],
-      image:'https://images.unsplash.com/photo-1485955900006-10f4d324d411?w=400',
+      image:'https://images.unsplash.com/photo-1662500015066-2026db62f23e?q=80&w=872&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
       liked: false,
       description: 'test aja sih sebenernya mah'
     }
