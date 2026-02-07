@@ -1,6 +1,10 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Grid, List, Heart, Star } from 'lucide-react';
+import Logo50 from './Images/Logo50.png';
+import Sentra from './Images/SENTRA.png';
+import Yadika from './Images/YADIKA.png';
+
 
 function CatalogPage({ products, categories, selectedCategory, setSelectedCategory }) {
   const navigate = useNavigate();
@@ -18,7 +22,7 @@ function CatalogPage({ products, categories, selectedCategory, setSelectedCatego
       backgroundSize: '400% 400%',
       animation: 'gradientShift 15s ease infinite',
       fontFamily: '"Poppins", sans-serif',
-    }}>
+    }}> 
       <style>{`
         @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&family=Bebas+Neue&display=swap');
         @keyframes gradientShift { 0% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } 100% { background-position: 0% 50%; } }
@@ -29,18 +33,106 @@ function CatalogPage({ products, categories, selectedCategory, setSelectedCatego
         .category-badge:hover { transform: scale(1.1); }
         .category-badge.active { transform: scale(1.15); }
       `}</style>
+      
 
-      {/* Hero */}
-      <div style={{ background: 'rgba(255,255,255,0.1)', backdropFilter: 'blur(20px)', borderBottom: '2px solid rgba(255,255,255,0.2)', padding: '40px 20px', animation: 'fadeInUp 0.8s ease' }}>
-        <div style={{ maxWidth: '1000px', margin: '0 auto', textAlign: 'center' }}>
-          <h1 style={{ fontSize: 'clamp(3rem, 8vw, 6rem)', fontFamily: '"Bebas Neue", sans-serif', background: 'linear-gradient(45deg, #fff, #ffd6ff, #e7c6ff)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', margin: '0 0 20px 0', letterSpacing: '0.05em', textShadow: '0 4px 20px rgba(0,0,0,0.3)' }}>
-            SMK YADIKA 9
-          </h1>
-          <p style={{ color: 'rgba(255,255,255,0.95)', fontSize: '1.3rem', fontWeight: '300', margin: 0 }}>
-            EXPO HUT 50 YADIKA PAMOR
-          </p>
-        </div>
+{/* Hero */}
+<div
+  style={{
+    background: 'rgba(255,255,255,0.1)',
+    backdropFilter: 'blur(20px)',
+    borderBottom: '2px solid rgba(255,255,255,0.2)',
+    padding: '40px 20px',
+    animation: 'fadeInUp 0.8s ease'
+  }}
+>
+  <div style={{ maxWidth: '1000px', margin: '0 auto', textAlign: 'center' }}>
+
+    {/* Title + Logo */}
+    <div
+      style={{
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        gap: '12px',
+        marginBottom: '20px',
+        flexWrap: 'nowrap'
+      }}
+    >
+      {/* Logo kiri */}
+      <img
+        src={Logo50}
+        alt="Logo Pamor"
+        style={{
+          width: 'clamp(36px, 8vw, 80px)',
+          height: 'clamp(36px, 8vw, 80px)',
+          objectFit: 'contain',
+          flexShrink: 0
+        }}
+      />
+
+      {/* Judul */}
+      <h1
+        style={{
+          fontSize: 'clamp(2.2rem, 7vw, 6rem)',
+          fontFamily: '"Bebas Neue", sans-serif',
+          background: 'linear-gradient(45deg, #fff, #ffd6ff, #e7c6ff)',
+          WebkitBackgroundClip: 'text',
+          WebkitTextFillColor: 'transparent',
+          margin: 0,
+          letterSpacing: '0.04em',
+          textShadow: '0 4px 20px rgba(0,0,0,0.3)',
+          whiteSpace: 'nowrap',
+          lineHeight: 1
+        }}
+      >
+        SMK YADIKA 9
+      </h1>
+
+      {/* Logo kanan (2 logo) */}
+      <div
+        style={{
+          display: 'flex',
+          alignItems: 'center',
+          gap: '8px',
+          flexShrink: 0
+        }}
+      >
+        <img
+          src={Yadika}
+          alt="Logo Yadika"
+          style={{
+            width: 'clamp(32px, 7vw, 70px)',
+            height: 'clamp(32px, 7vw, 70px)',
+            objectFit: 'contain'
+          }}
+        />
+
+        <img
+          src={Sentra}
+          alt="Sentra"
+          style={{
+            width: 'clamp(32px, 7vw, 70px)',
+            height: 'clamp(32px, 7vw, 70px)',
+            objectFit: 'contain'
+          }}
+        />
       </div>
+    </div>
+
+    {/* Subtitle */}
+    <p
+      style={{
+        color: 'rgba(255,255,255,0.95)',
+        fontSize: '1.3rem',
+        fontWeight: '300',
+        margin: 0
+      }}
+    >
+      EXPO HUT 50 YADIKA PAMOR
+    </p>
+
+  </div>
+</div>
 
       {/* Filter Bar */}
       <div style={{ maxWidth: '1400px', margin: '0 auto', padding: '40px 20px', display: 'flex', justifyContent: 'center' }}>
