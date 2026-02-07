@@ -4,6 +4,9 @@ import CatalogPage from './catalogpage';
 import ProductDetail from './productdetail';
 import ArduinoImg from './Images/arduino.png';
 import BantalImg from './Images/bantal.png';
+import Kipas from './Images/kipas.png';
+import Manik from './Images/manik.png';
+import Minuman from './Images/minuman.png';
 
 function App() {
   const categories = [
@@ -40,27 +43,27 @@ function App() {
     },
     { 
       id: 4, 
-      name: 'Mechanical Keyboard', 
-      categories: ['Electronics', 'All'],
-      image: 'https://images.unsplash.com/photo-1587829741301-dc798b83add3?w=400', 
+      name: 'Minuman', 
+      categories: ['Home', 'All'],
+      image: Minuman, 
       liked: true,
-      description: 'Keyboard mekanik dengan tactile switch, nyaman untuk mengetik dan gaming.'
+      description: 'Minuman segar yang menyegarkan, cocok untuk menemani aktivitas sehari-hari.'
     },
     { 
       id: 5, 
       name: 'Manik Manik Homemade', 
       categories: ['Fashion', 'All'],
-      image: 'https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=400', 
+      image: Manik, 
       liked: false,
       description: 'Gantungan kunci buatan tangan, unik dan cocok dijadikan hadiah.'
     },
     { 
       id: 6, 
-      name: 'Ceramic Plant Pot', 
+      name: 'Kipas', 
       categories: ['Home', 'All'],
-      image: 'https://images.unsplash.com/photo-1485955900006-10f4d324d411?w=400', 
+      image: Kipas, 
       liked: false,
-      description: 'Pot keramik elegan untuk tanaman hias, menambah keindahan interior rumah.'
+      description: 'Kipas angin yang nyaman digunakan di rumah, cocok untuk kamar atau ruang terbuka.'
     },
     {
       id: 7,
