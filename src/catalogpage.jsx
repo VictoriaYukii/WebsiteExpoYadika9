@@ -45,77 +45,50 @@ function CatalogPage({ products, categories, selectedCategory, setSelectedCatego
     animation: 'fadeInUp 0.8s ease'
   }}
 >
-  <div style={{ maxWidth: '1000px', margin: '0 auto', textAlign: 'center' }}>
+  <div style={{ maxWidth: '720px', margin: '0 auto', textAlign: 'center' }}>
 
-    {/* Title + Logo */}
-    <div
-      style={{
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-        gap: '12px',
-        marginBottom: '20px',
-        flexWrap: 'nowrap'
-      }}
-    >
-      {/* Logo kiri */}
-      <img
-        src={Logo50}
-        alt="Logo Pamor"
-        style={{
-          width: 'clamp(36px, 8vw, 80px)',
-          height: 'clamp(36px, 8vw, 80px)',
-          objectFit: 'contain',
-          flexShrink: 0
-        }}
-      />
+{/* Title + Logo */}
+<div
+  style={{
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    gap: '12px',
+    marginBottom: '20px'
+  }}
+>
+  {/* Logo kiri */}
+  <img
+    src={Logo50}
+    alt="Logo 50"
+    style={{
+      width: 'clamp(48px, 7vw, 90px)',
+      height: 'clamp(48px, 7vw, 90px)',
+      objectFit: 'contain'
+    }}
+  />
 
-      {/* Judul */}
-      <h1
-        style={{
-          fontSize: 'clamp(2.2rem, 7vw, 6rem)',
-          fontFamily: '"Bebas Neue", sans-serif',
-          background: 'linear-gradient(45deg, #fff, #ffd6ff, #e7c6ff)',
-          WebkitBackgroundClip: 'text',
-          WebkitTextFillColor: 'transparent',
-          margin: 0,
-          letterSpacing: '0.04em',
-          textShadow: '0 4px 20px rgba(0,0,0,0.3)',
-          whiteSpace: 'nowrap',
-          lineHeight: 1
-        }}
-      >
-        SMK YADIKA 9
-      </h1>
+  {/* Judul */}
+  <h1
+    style={{
+      fontSize: 'clamp(2.2rem, 6vw, 5.5rem)',
+      fontFamily: '"Bebas Neue", sans-serif',
+      background: 'linear-gradient(45deg, #fff, #ffd6ff, #e7c6ff)',
+      WebkitBackgroundClip: 'text',
+      WebkitTextFillColor: 'transparent',
+      margin: 0,
+      letterSpacing: '0.04em',
+      textShadow: '0 4px 20px rgba(0,0,0,0.3)',
+      whiteSpace: 'nowrap'
+    }}
+  >
+    SMK YADIKA 9
+  </h1>
 
-      {/* Logo kanan (2 logo) */}
-      <div
-        style={{
-          display: 'flex',
-          alignItems: 'center',
-          gap: '8px',
-          flexShrink: 0
-        }}
-      >
-        <img
-          src={Yadika}
-          alt="Logo Yadika"
-          style={{
-            width: 'clamp(32px, 7vw, 70px)',
-            height: 'clamp(32px, 7vw, 70px)',
-            objectFit: 'contain'
-          }}
-        />
-
-        <img
-          src={Sentra}
-          alt="Sentra"
-          style={{
-            width: 'clamp(32px, 7vw, 70px)',
-            height: 'clamp(32px, 7vw, 70px)',
-            objectFit: 'contain'
-          }}
-        />
+  {/* Logo kanan */}
+  <div style={{ display: 'flex', gap: '6px' }}>
+    <img src={Yadika} alt="Yadika" style={{ width: 'clamp(44px, 6vw, 80px)' }} />
+    <img src={Sentra} alt="Sentra" style={{ width: 'clamp(44px, 6vw, 80px)' }} />
       </div>
     </div>
 
