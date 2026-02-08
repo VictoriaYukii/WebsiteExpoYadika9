@@ -56,13 +56,13 @@ function ProductDetail({ products }) {
         flexWrap: 'wrap'
       }}>
         {/* Foto */}
-        <div style={{ flex: '1', minWidth: '400px', maxWidth: '400px', position: 'relative' }}>
+        <div style={{ flex: 'flex', minWidth: '300px', maxWidth: '300px', position: 'relative' }}>
           <img
             src={product.image}
             alt={product.name}
             style={{
               width: '100%',
-              height: '400px',
+              height: '300px',
               borderRadius: '24px',
               objectFit: 'cover',
             }}

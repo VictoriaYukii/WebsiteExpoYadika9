@@ -66,41 +66,40 @@ function CatalogPage({ products, categories, selectedCategory, setSelectedCatego
 {/* Title + Logo */}
 <div
   style={{
-    display: 'flex',
+    display: 'grid',
+    gridTemplateColumns: 'auto 1fr auto',
     alignItems: 'center',
-    justifyContent: 'center',
     gap: '12px',
     marginBottom: '20px'
   }}
 >
+
+
   {/* Logo kiri */}
-  <img
-    src={Logo50}
-    alt="Logo 50"
-    style={{
-      width: 'clamp(48px, 7vw, 90px)',
-      height: 'clamp(48px, 7vw, 90px)',
-      objectFit: 'contain'
-    }}
-  />
+<img
+  src={Logo50}
+  alt="Logo 50"
+  style={{
+    width: 'clamp(48px, 7vw, 90px)',
+    height: 'auto',
+    objectFit: 'contain'
+  }}
+/>
 
   {/* Judul */}
- <h1
+<h1
   style={{
+    justifySelf: 'center',
     fontSize: 'clamp(2.2rem, 7vw, 6rem)',
     fontFamily: '"Bebas Neue", sans-serif',
-    background: 'linear-gradient(45deg, #fff, #ffd6ff, #e7c6ff)',
     WebkitBackgroundClip: 'text',
     WebkitTextFillColor: '#ffffff',
     margin: 0,
     letterSpacing: '0.04em',
-    textShadow: '0 4px 20px rgba(0,0,0,0.3)',
+    textShadow: '0 6px 22px rgba(0,0,0,0.45)',
     whiteSpace: 'nowrap',
     lineHeight: 1,
-    display: 'flex',
-    justifyContent: 'center',
-    filter: 'none',
-    opacity: 1
+    display: 'flex'
   }}
 >
   {'SMK YADIKA 9'.split('').map((char, i) => (
@@ -118,12 +117,13 @@ function CatalogPage({ products, categories, selectedCategory, setSelectedCatego
 </h1>
 
 
+
   {/* Logo kanan */}
-  <div style={{ display: 'flex', gap: '6px' }}>
-    <img src={Yadika} alt="Yadika" style={{ width: 'clamp(44px, 6vw, 80px)' }} />
-    <img src={Sentra} alt="Sentra" style={{ width: 'clamp(44px, 6vw, 80px)' }} />
-      </div>
-    </div>
+ <div style={{ display: 'flex', gap: '6px' }}>
+  <img src={Yadika} alt="Yadika" style={{ width: 'clamp(44px, 6vw, 80px)' }} />
+  <img src={Sentra} alt="Sentra" style={{ width: 'clamp(44px, 6vw, 80px)' }} />
+</div>
+</div>
 
     {/* Subtitle */}
     <p
