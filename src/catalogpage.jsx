@@ -97,106 +97,98 @@ function CatalogPage({ products, categories, selectedCategory, setSelectedCatego
   style={{
     position: 'relative',
     overflow: 'hidden',
-    padding: '40px 20px',
-    borderBottom: '2px solid rgba(255,255,255,0.2)'
+    padding: '48px 20px',
+    borderBottom: '2px solid rgba(255, 255, 255, 0.81)',
+    textAlign: 'center'
   }}
 >
   {/* BLUR BASE */}
-  <div className="bg-blur" 
-  />
+  <div className="bg-blur" />
 
   {/* MOVING CLEAR LINE */}
   <div className="bg-scan" />
 
- <div style={{ position: 'relative', zIndex: 3 }}>
-
- </div>
   {/* CONTENT */}
   <div
     style={{
       position: 'relative',
       zIndex: 3,
-      maxWidth: '720px',
-      margin: '0 auto',
-      textAlign: 'center'
+      maxWidth: '900px',
+      margin: '0 auto'
     }}
   >
-{/* Title + Logo */}
-<div
-  style={{
-    position: 'relative',
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    marginBottom: '20px'
-  }}
->
-
-
-  {/* Logo kiri */}
-<img
-  src={Logo50}
-  alt="Logo 50"
-  style={{
-    width: 'clamp(48px, 7vw, 90px)',
-    height: 'auto',
-    objectFit: 'contain'
-  }}
-/>
-
-  {/* Judul */}
-<h1
-  style={{
-    justifySelf: 'center',
-    fontSize: 'clamp(2.2rem, 7vw, 6rem)',
-    fontFamily: 'montserrat bold, sans-serif',
-    WebkitBackgroundClip: 'text',
-    WebkitTextFillColor: '#ffffff',
-    margin: 0,
-    letterSpacing: '0.04em',
-    textShadow: '0 6px 22px rgba(0,0,0,0.45)',
-    whiteSpace: 'nowrap',
-    lineHeight: 1,
-    display: 'flex'
-  }}
->
-  {'SMK YADIKA 9'.split('').map((char, i) => (
-    <span
-      key={i}
+    {/* LOGO ROW */}
+    <div
       style={{
-        display: 'inline-block',
-        animation: 'floatChar 4s ease-in-out infinite',
-        animationDelay: `${i * 0.12}s`
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        gap: 'clamp(12px, 4vw, 28px)',
+        marginBottom: '22px',
+        flexWrap: 'wrap'
       }}
     >
-      {char === ' ' ? '\u00A0' : char}
-    </span>
-  ))}
-</h1>
+      <img
+        src={Logo50}
+        alt="Logo 50"
+        style={{ height: 'clamp(46px, 7vw, 80px)' }}
+      />
+      <img
+        src={Yadika}
+        alt="Yadika"
+        style={{ height: 'clamp(46px, 7vw, 80px)' }}
+      />
+      <img
+        src={Sentra}
+        alt="Sentra"
+        style={{ height: 'clamp(46px, 7vw, 80px)' }}
+      />
+    </div>
 
+    {/* TITLE */}
+    <h1
+      style={{
+        fontSize: 'clamp(2.4rem, 7vw, 5.8rem)',
+        fontFamily: 'Montserrat, sans-serif',
+        color: 'white',
+        fontWeight: 800,
+        margin: 0,
+        letterSpacing: '0.12em',
+        textShadow: '0 10px 28px rgba(219, 229, 240, 0.98)',
+        whiteSpace: 'nowrap'
+      }}
+    >
+      {'SMK YADIKA 9'.split('').map((char, i) => (
+        <span
+          key={i}
+          style={{
+            display: 'inline-block',
+            animation: 'floatChar 4s ease-in-out infinite',
+            animationDelay: `${i * 0.12}s`
+          }}
+        >
+          {char === ' ' ? '\u00A0' : char}
+        </span>
+      ))}
+    </h1>
 
-
-  {/* Logo kanan */}
- <div style={{ display: 'flex', gap: '6px' }}>
-  <img src={Yadika} alt="Yadika" style={{ width: 'clamp(44px, 6vw, 80px)' }} />
-  <img src={Sentra} alt="Sentra" style={{ width: 'clamp(44px, 6vw, 80px)' }} />
-</div>
-</div>
-
-    {/* Subtitle */}
+    {/* SUBTITLE */}
     <p
       style={{
+        marginTop: '14px',
+        fontSize: 'clamp(1rem, 2.5vw, 1.3rem)',
+        fontWeight: 800,
+        letterSpacing: '0.08em',
+        textShadow: '0 6px 18px rgba(0,0,0,0.3)',
         color: 'rgba(255,255,255,0.95)',
-        fontSize: '1.3rem',
-        fontWeight: '300',
-        margin: 0
+        letterSpacing: '0.08em'
       }}
     >
       EXPO HUT 50 YADIKA PAMOR
     </p>
-
   </div>
 </div>
+
 
       {/* Filter Bar */}
 <div
