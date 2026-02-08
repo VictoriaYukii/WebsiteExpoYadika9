@@ -124,10 +124,10 @@ function CatalogPage({ products, categories, selectedCategory, setSelectedCatego
 {/* Title + Logo */}
 <div
   style={{
-    display: 'grid',
-    gridTemplateColumns: 'auto 1fr auto',
+    position: 'relative',
+    display: 'flex',
     alignItems: 'center',
-    gap: '12px',
+    justifyContent: 'center',
     marginBottom: '20px'
   }}
 >
