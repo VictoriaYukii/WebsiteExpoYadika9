@@ -108,12 +108,43 @@ function CatalogPage({ products, categories, selectedCategory, setSelectedCatego
 </div>
 
       {/* Filter Bar */}
-      <div style={{ maxWidth: '1400px', margin: '0 auto', padding: '40px 20px', display: 'flex', justifyContent: 'center' }}>
-        <div style={{ display: 'flex', gap: '10px', background: '#f0f0f0', padding: '8px', borderRadius: '12px' }}>
-          <button onClick={() => setView('grid')} style={{ padding: '12px 20px', border: 'none', background: view==='grid'?'#667eea':'transparent', color: view==='grid'?'white':'#666', borderRadius:'8px', display:'flex', alignItems:'center', gap:'8px', fontWeight:'600' }}><Grid size={20}/> Grid</button>
-          <button onClick={() => setView('list')} style={{ padding: '12px 20px', border: 'none', background: view==='list'?'#667eea':'transparent', color: view==='list'?'white':'#666', borderRadius:'8px', display:'flex', alignItems:'center', gap:'8px', fontWeight:'600' }}><List size={20}/> List</button>
-        </div>
-      </div>
+<div
+  style={{
+    maxWidth: '1400px',
+    margin: '0 auto',
+    padding: '40px 20px',
+    display: 'flex',
+    justifyContent: 'center'
+  }}
+>
+  <div
+    style={{
+      display: 'flex',
+      gap: '10px',
+      background: '#f0f0f0',
+      padding: '8px',
+      borderRadius: '12px'
+    }}
+  >
+    <button
+      style={{
+        padding: '12px 20px',
+        border: 'none',
+        background: '#667eea',
+        color: 'white',
+        borderRadius: '8px',
+        display: 'flex',
+        alignItems: 'center',
+        gap: '8px',
+        fontWeight: '600',
+        cursor: 'default'
+      }}
+    >
+      <Grid size={20} /> Grid
+    </button>
+  </div>
+</div>
+
 
       {/* Categories */}
       <div style={{ display: 'flex', gap: '15px', flexWrap: 'wrap', marginBottom: '40px', justifyContent: 'center' }}>
