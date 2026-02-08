@@ -16,17 +16,21 @@ function CatalogPage({ products, categories, selectedCategory, setSelectedCatego
   );
 
   return (
-    <div style={{
-      minHeight: '320vh',
-      background: 'linear-gradient(135deg, #667eea 0%, #764ba2 25%, #f093fb 50%, #4facfe 75%, #00f2fe 100%)',
-      backgroundSize: '400% 400%',
-      animation: 'gradientShift 15s ease infinite',
-      fontFamily: '"Poppins", sans-serif',
-    }}> 
+    <div style={{position: 'relative', minHeight: '320vh',backdropFilter: 'blur(20px)',fontFamily: '"Poppins", sans-serif',}}>
+      <div 
+        style={{
+          position: 'absolute',
+          inset: 0,
+          backgroundImage:'url(https://i.ytimg.com/vi/ix3waWXxmh8/maxresdefault.jpg)',
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          filter: 'blur(10px)',
+          transform: 'scale(1.1)',
+          zIndex: -1,
+        }}
+      />
       <style>{`
         @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&family=Bebas+Neue&display=swap');
-        @keyframes gradientShift { 0% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } 100% { background-position: 0% 50%; } }
-        @keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
         .product-card { transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
         .product-card:hover { transform: translateY(-12px) scale(1.02); box-shadow: 0 25px 50px rgba(0,0,0,0.3); }
         .category-badge { transition: all 0.3s ease; cursor: pointer; }
@@ -46,8 +50,10 @@ function CatalogPage({ products, categories, selectedCategory, setSelectedCatego
 {/* Hero */}
 <div
   style={{
-    background: 'linear-gradient(135deg, #c084fc, #a78bfa)',
+    background: 'linear-gradient(135deg, #c084fc79, #a78bfa)',
     borderBottom: '2px solid rgba(255,255,255,0.2)',
+    backdropFilter: 'blur(20px)',
+    filter: 'drop-shadow(0 4px 20px rgba(0,0,0,0.3))',
     padding: '40px 20px',
     animation: 'fadeInUp 0.8s ease'
   }}
