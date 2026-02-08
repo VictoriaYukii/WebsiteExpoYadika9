@@ -17,65 +17,85 @@ function App() {
   ];
 
   const products = [
-    { 
-      id: 1, 
-      name: 'Bantal Bergambar', 
+    {
+      id: 1,
+      name: 'Bantal Bergambar',
       categories: ['Home', 'All'],
       image: BantalImg,
       liked: false,
-      description: 'Bantal lembut dengan gambar lucu, cocok untuk dekorasi kamar dan tidur nyaman.'
+      description: 'Bantal lembut dengan gambar lucu, cocok untuk dekorasi kamar dan tidur nyaman.',
+      bahan: '-',
+      targetPasar: '-',
+      manfaat: '-',
     },
-    { 
-      id: 2, 
-      name: 'Kalender Bertema', 
+    {
+      id: 2,
+      name: 'Kalender Bertema',
       categories: ['Home', 'All'],
-      image: 'https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=400', 
+      image: 'https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=400',
       liked: true,
-      description: 'Kalender kreatif dengan desain menarik, bisa untuk catatan harian atau dekorasi meja.'
+      description: 'Kalender kreatif dengan desain menarik, bisa untuk catatan harian atau dekorasi meja.',
+      bahan: '-',
+      targetPasar: 'Test tulisan',
+      manfaat: '-',
     },
-    { 
-      id: 3, 
-      name: 'Arduino Product', 
+    {
+      id: 3,
+      name: 'Arduino Product',
       categories: ['Electronics', 'All'],
-      image: ArduinoImg,  
+      image: ArduinoImg,
       liked: false,
-      description: 'Kit Arduino lengkap untuk eksperimen elektronik, cocok untuk pemula dan hobi.'
+      description: 'Kit Arduino lengkap untuk eksperimen elektronik, cocok untuk pemula dan hobi.',
+      bahan: '-',
+      targetPasar: '-',
+      manfaat: '-',
     },
-    { 
-      id: 4, 
-      name: 'Minuman Herbal', 
+    {
+      id: 4,
+      name: 'Minuman Herbal',
       categories: ['Home', 'All'],
-      image: Minuman, 
+      image: Minuman,
       liked: true,
-      description: 'Minuman segar yang menyegarkan, cocok untuk menemani aktivitas sehari-hari.'
+      description: 'Minuman segar yang menyegarkan, cocok untuk menemani aktivitas sehari-hari.',
+      bahan: '-',
+      targetPasar: '-',
+      manfaat: '-',
     },
-    { 
-      id: 5, 
-      name: 'Manik Manik Homemade', 
+    {
+      id: 5,
+      name: 'Manik Manik Homemade',
       categories: ['Fashion', 'All'],
-      image: Manik, 
+      image: Manik,
       liked: false,
-      description: 'Gantungan kunci buatan tangan, unik dan cocok dijadikan hadiah.'
+      description: 'Gantungan kunci buatan tangan, unik dan cocok dijadikan hadiah.',
+      bahan: '-',
+      targetPasar: '-',
+      manfaat: '-',
     },
-    { 
-      id: 6, 
-      name: 'Kipas Custom Design', 
+    {
+      id: 6,
+      name: 'Kipas Custom Design',
       categories: ['Home', 'All'],
-      image: Kipas, 
+      image: Kipas,
       liked: false,
-      description: 'Kipas angin yang nyaman digunakan di rumah, cocok untuk kamar atau ruang terbuka.'
+      description: 'Kipas angin yang nyaman digunakan di rumah, cocok untuk kamar atau ruang terbuka.',
+      bahan: '-',
+      targetPasar: '-',
+      manfaat: '-',
     },
     {
       id: 7,
       name: 'Test',
-      categories:['Home','All'],
-      image:'https://images.unsplash.com/photo-1662500015066-2026db62f23e?q=80&w=872&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+      categories: ['Home', 'All'],
+      image: 'https://images.unsplash.com/photo-1662500015066-2026db62f23e?q=80&w=872',
       liked: false,
-      description: 'test aja sih sebenernya mah'
+      description: 'test aja sih sebenernya mah',
+      bahan: '-',
+      targetPasar: '-',
+      manfaat: '-',
     }
   ];
 
-  // State kategori disimpan di parent supaya tetap ada saat navigasi
   const [selectedCategory, setSelectedCategory] = useState('All');
 
   return (
@@ -83,16 +103,22 @@ function App() {
       <Route
         path="/"
         element={
-          <CatalogPage 
-            products={products} 
-            categories={categories} 
-            selectedCategory={selectedCategory} 
-            setSelectedCategory={setSelectedCategory} 
+          <CatalogPage
+            products={products}
+            categories={categories}
+            selectedCategory={selectedCategory}
+            setSelectedCategory={setSelectedCategory}
           />
         }
       />
+
+      {/* WAJIB ADA DUA ROUTE INI */}
       <Route
         path="/product/:id"
+        element={<ProductDetail products={products} />}
+      />
+      <Route
+        path="/product/:id/:tab"
         element={<ProductDetail products={products} />}
       />
     </Routes>

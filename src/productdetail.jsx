@@ -1,108 +1,229 @@
-import React from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
+import React, { useRef, useEffect, useState } from 'react';
+import { useParams, useNavigate, useLocation } from 'react-router-dom';
 import { Heart } from 'lucide-react';
+import gedung from './Images/gedung.jpeg';
+
+const TAB_ORDER = ['detail', 'bahan', 'target', 'manfaat'];
 
 function ProductDetail({ products }) {
-  const { id } = useParams();
+  const { id, tab = 'detail' } = useParams();
   const navigate = useNavigate();
+  const location = useLocation();
+
   const product = products.find(p => p.id === parseInt(id));
+  const [animClass, setAnimClass] = useState('slide-in');
+  const prevTab = useRef(tab);
 
   if (!product) return <p>Produk tidak ditemukan!</p>;
 
-  return (
-    <div style={{
-      minHeight: '100vh',
-      background: 'linear-gradient(135deg, #667eea 0%, #764ba2 25%, #f093fb 50%, #4facfe 75%, #00f2fe 100%)',
-      backgroundSize: '400% 400%',
-      animation: 'gradientShift 15s ease infinite',
-      fontFamily: '"Poppins", sans-serif',
-      padding: '40px 20px',
-      color: 'white'
-    }}>
-      <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&family=Bebas+Neue&display=swap');
-        @keyframes gradientShift { 0% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } 100% { background-position: 0% 50%; } }
-        @keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
-        @keyframes scaleIn { from { opacity: 0; transform: scale(0.9); } to { opacity: 1; transform: scale(1); } }
-      `}</style>
+  const changeTab = (nextTab) => {
+    if (nextTab === tab) return;
 
-      {/* Hero */}
-      <div style={{ textAlign: 'center', marginBottom: '40px', animation: 'fadeInUp 0.8s ease' }}>
-        <h1 style={{
-          fontFamily: '"Bebas Neue", sans-serif',
-          fontSize: 'clamp(3rem, 6vw, 5rem)',
-          background: 'linear-gradient(45deg, #fff, #ffd6ff, #e7c6ff)',
-          WebkitBackgroundClip: 'text',
-          WebkitTextFillColor: 'transparent',
-          textShadow: '0 4px 20px rgba(0,0,0,0.3)',
-          margin: 0
-        }}>
+    const currentIndex = TAB_ORDER.indexOf(tab);
+    const nextIndex = TAB_ORDER.indexOf(nextTab);
+
+    setAnimClass(nextIndex > currentIndex ? 'slide-left' : 'slide-right');
+
+    setTimeout(() => {
+      navigate(`/product/${id}/${nextTab}`, {
+        replace: false,
+        state: location.state
+      });
+      setAnimClass('slide-in');
+    }, 200);
+  };
+
+  const handleBack = () => navigate('/', { replace: true });
+
+  useEffect(() => {
+    setAnimClass('slide-in');
+  }, [tab]);
+
+  return (
+    <div
+      style={{
+        position: 'relative',
+        minHeight: '100vh',
+        overflow: 'hidden',
+        fontFamily: '"Poppins", sans-serif',
+        color: 'white'
+      }}
+    >
+      {/* === BLUR BACKGROUND IMAGE === */}
+      <div
+        style={{
+          position: 'absolute',
+          inset: 0,
+          backgroundImage: `url(${gedung})`,
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          filter: 'blur(10px)',
+          transform: 'scale(1.25)',
+          zIndex: 0
+        }}
+      />
+
+      {/* === OVERLAY === */}
+      <div
+        style={{
+          position: 'absolute',
+          inset: 0,
+          zIndex: 1
+        }}
+      />
+
+      {/* === CONTENT === */}
+      <div style={{ position: 'relative', zIndex: 2, padding: '40px 20px' }}>
+        <style>{`
+          .slide-in { animation: slideIn 0.45s ease forwards; }
+          .slide-left { animation: slideLeft 0.25s ease forwards; }
+          .slide-right { animation: slideRight 0.25s ease forwards; }
+
+          @keyframes slideIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+          }
+
+          @keyframes slideLeft {
+            from { opacity: 1; transform: translateX(0); }
+            to { opacity: 0; transform: translateX(-40px); }
+          }
+
+          @keyframes slideRight {
+            from { opacity: 1; transform: translateX(0); }
+            to { opacity: 0; transform: translateX(40px); }
+          }
+        `}</style>
+
+        {/* === TITLE (MOBILE SAFE) === */}
+        <h1
+          style={{
+            textAlign: 'center',
+            fontFamily: '"Anton", sans-serif',
+            fontSize: 'clamp(1.8rem, 7vw, 4.2rem)',
+            marginBottom: '32px',
+            letterSpacing: '0.05em',
+            textTransform: 'uppercase',
+            lineHeight: 1.15,
+            padding: '0 16px',
+            wordBreak: 'break-word',
+            overflowWrap: 'anywhere',
+            textShadow: '0 10px 22px rgba(0,0,0,0.5)'
+          }}
+        >
           {product.name}
         </h1>
-      </div>
 
-      {/* Product Card */}
-      <div style={{
-        maxWidth: '1000px',
-        margin: '0 auto',
-        background: 'rgba(255,255,255,0.1)',
-        borderRadius: '24px',
-        filter: 'none',
-        boxShadow: '0 20px 60px rgba(0,0,0,0.2)',
-        display: 'flex',
-        gap: '40px',
-        padding: '30px',
-        animation: 'scaleIn 0.6s ease 0.2s both',
-        flexWrap: 'wrap'
-      }}>
-        {/* Foto */}
-        <div style={{ flex: 'flex', minWidth: '300px', maxWidth: '300px', position: 'relative' }}>
-          <img
-            src={product.image}
-            alt={product.name}
-            style={{
-              width: '100%',
-              height: '300px',
-              borderRadius: '24px',
-              objectFit: 'cover',
-            }}
-          />
-          <button style={{
-            position: 'absolute',
-            top: '15px',
-            right: '15px',
-            background: 'rgba(255,255,255,0.95)',
-            border: 'none',
-            borderRadius: '50%',
-            width: '50px',
-            height: '50px',
+        {/* === CARD === */}
+        <div
+          style={{
+            maxWidth: '1000px',
+            margin: '0 auto',
+            background: 'rgba(235, 23, 23, 0)',
+            backdropFilter: 'blur(20px)',
+            borderRadius: '30px',
+            padding: '30px',
             display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            cursor: 'pointer'
-          }}>
-            <Heart size={24} fill={product.liked ? '#FF6B9D' : 'none'} color={product.liked ? '#FF6B9D' : '#fff'} />
-          </button>
-        </div>
+            gap: '40px',
+            flexWrap: 'wrap'
+          }}
+        >
+          {/* IMAGE */}
+          <div style={{ width: '300px', position: 'relative', margin: '0 auto' }}>
+            <img
+              src={product.image}
+              alt={product.name}
+              style={{
+                width: '100%',
+                height: '300px',
+                borderRadius: '24px',
+                objectFit: 'cover'
+              }}
+            />
+            <button
+              style={{
+                position: 'absolute',
+                top: '15px',
+                right: '15px',
+                background: 'white',
+                border: 'none',
+                borderRadius: '50%',
+                width: '50px',
+                height: '50px',
+                cursor: 'pointer'
+              }}
+            >
+              <Heart size={24} fill={product.liked ? '#FF6B9D' : 'none'} />
+            </button>
+          </div>
 
-        {/* Deskripsi */}
-        <div style={{ flex: '1', minWidth: '300px', display: 'flex', flexDirection: 'column', justifyContent: 'center', gap: '20px' }}>
-          <p style={{ fontSize: '1.3rem' }}><strong>Kategori:</strong> {product.category}</p>
-          <p style={{ fontSize: '1.3rem' }}><strong>Deskripsi:</strong> {product.description}</p>
+          {/* CONTENT */}
+          <div style={{ flex: 1 }}>
+            {/* TABS */}
+            <div style={{ display: 'flex', gap: '12px', marginBottom: '25px', flexWrap: 'wrap' }}>
+              {[
+                ['detail', 'Detail'],
+                ['bahan', 'Bahan'],
+                ['target', 'Target Pasar'],
+                ['manfaat', 'Manfaat']
+              ].map(([key, label]) => (
+                <button
+                  key={key}
+                  onClick={() => changeTab(key)}
+                  style={{
+                    padding: '12px 22px',
+                    borderRadius: '12px',
+                    border: 'none',
+                    fontWeight: '700',
+                    cursor: 'pointer',
+                    background:
+                      tab === key
+                        ? 'linear-gradient(135deg,#667eea,#764ba2)'
+                        : 'rgba(255,255,255,0.9)',
+                    color: tab === key ? 'white' : '#333'
+                  }}
+                >
+                  {label}
+                </button>
+              ))}
+            </div>
 
-          <button onClick={() => navigate(-1)} style={{
-            marginTop: '20px',
-            padding: '16px',
-            borderRadius: '14px',
-            border: 'none',
-            fontWeight: '700',
-            fontSize: '1.1rem',
-            background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
-            color: 'white',
-            cursor: 'pointer'
-          }}>
-            ⬅ Kembali
-          </button>
+            {/* TAB CONTENT */}
+            <div
+              key={tab}
+              className={animClass}
+              style={{
+                background: 'rgba(255, 255, 255, 0.96)',
+                color: '#333',
+                padding: '25px',
+                borderRadius: '16px',
+                minHeight: '160px'
+              }}
+            >
+              {tab === 'detail' && <p>{product.description}</p>}
+              {tab === 'bahan' && <p>{product.bahan || 'Belum tersedia'}</p>}
+              {tab === 'target' && <p>{product.targetPasar || 'Belum tersedia'}</p>}
+              {tab === 'manfaat' && <p>{product.manfaat || 'Belum tersedia'}</p>}
+            </div>
+
+            {/* BACK */}
+            <button
+              onClick={handleBack}
+              style={{
+                marginTop: '25px',
+                width: '100%',
+                padding: '16px',
+                borderRadius: '14px',
+                border: 'none',
+                fontWeight: '700',
+                background: 'linear-gradient(135deg,#667eea,#764ba2)',
+                color: 'white',
+                cursor: 'pointer'
+              }}
+            >
+              ⬅ Kembali
+            </button>
+          </div>
         </div>
       </div>
     </div>

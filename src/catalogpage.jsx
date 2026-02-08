@@ -4,6 +4,7 @@ import { Grid, List, Heart, Star } from 'lucide-react';
 import Logo50 from './Images/Logo50.png';
 import Sentra from './Images/SENTRA.png';
 import Yadika from './Images/YADIKA.png';
+import gedung from './Images/gedung.jpeg';
 
 
 function CatalogPage({ products, categories, selectedCategory, setSelectedCategory }) {
@@ -21,49 +22,100 @@ function CatalogPage({ products, categories, selectedCategory, setSelectedCatego
         style={{
           position: 'absolute',
           inset: 0,
-          backgroundImage:'url(https://i.ytimg.com/vi/ix3waWXxmh8/maxresdefault.jpg)',
+          backgroundImage: `url(${gedung})`,
           backgroundSize: 'cover',
           backgroundPosition: 'center',
           filter: 'blur(10px)',
-          transform: 'scale(1.1)',
           zIndex: -1,
         }}
       />
-      <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&family=Bebas+Neue&display=swap');
-        .product-card { transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
-        .product-card:hover { transform: translateY(-12px) scale(1.02); box-shadow: 0 25px 50px rgba(0,0,0,0.3); }
-        .category-badge { transition: all 0.3s ease; cursor: pointer; }
-        .category-badge:hover { transform: scale(1.1); }
-        .category-badge.active { transform: scale(1.15); }
-      `}</style>
-      <style>
-{`
-@keyframes floatChar {
-  0%   { transform: translateY(0); }
-  50%  { transform: translateY(-10px); }
-  100% { transform: translateY(0); }
-}
-`}
-</style>
+  <style>{`
+  @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&family=Bebas+Neue&display=swap');
+
+  /* PRODUCT */
+  .product-card {
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  }
+  .product-card:hover {
+    transform: translateY(-12px) scale(1.02);
+    box-shadow: 0 25px 50px rgba(0,0,0,0.3);
+  }
+
+  .category-badge {
+    transition: all 0.3s ease;
+    cursor: pointer;
+  }
+  .category-badge:hover {
+    transform: scale(1.1);
+  }
+  .category-badge.active {
+    transform: scale(1.15);
+  }
+
+  /* FLOAT TEXT */
+  @keyframes floatChar {
+    0%   { transform: translateY(0); }
+    50%  { transform: translateY(-10px); }
+    100% { transform: translateY(0); }
+  }
+
+  /* BLUR BACKGROUND */
+  .bg-blur {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, #9dc3f1, #a78bfa);
+    background-size: 400% 400%;
+    animation: gradientShift 15s ease infinite;
+    filter: blur(18px);
+    transform: scale(1.1);
+    z-index: 1;
+  }
+
+  /* SCAN LINE */
+  .bg-scan {
+    position: absolute;
+    inset: -50%;
+    background: linear-gradient(
+      135deg,
+      transparent 45%,
+      rgba(255,255,255,0.9) 50%,
+      transparent 55%
+    );
+    animation: scanMove 8s linear infinite;
+    z-index: 2;
+    pointer-events: none;
+  }
+
+  @keyframes scanMove {
+    0% { transform: translate(-30%, -30%); }
+    100% { transform: translate(30%, 30%); }
+  }
+`}</style>
 
 {/* Hero */}
 <div
   style={{
-    background: 'linear-gradient(135deg, #c084fc79, #a78bfa)',
-    borderBottom: '2px solid rgba(255,255,255,0.2)',
-    backdropFilter: 'blur(20px)',
-    filter: 'drop-shadow(0 4px 20px rgba(0,0,0,0.3))',
+    position: 'relative',
+    overflow: 'hidden',
     padding: '40px 20px',
-    animation: 'fadeInUp 0.8s ease'
+    borderBottom: '2px solid rgba(255,255,255,0.2)'
   }}
 >
+  {/* BLUR BASE */}
+  <div className="bg-blur" 
+  />
 
+  {/* MOVING CLEAR LINE */}
+  <div className="bg-scan" />
+
+ <div style={{ position: 'relative', zIndex: 3 }}>
+
+ </div>
   {/* CONTENT */}
   <div
     style={{
       position: 'relative',
-      zIndex: 2,
+      zIndex: 3,
       maxWidth: '720px',
       margin: '0 auto',
       textAlign: 'center'
@@ -97,7 +149,7 @@ function CatalogPage({ products, categories, selectedCategory, setSelectedCatego
   style={{
     justifySelf: 'center',
     fontSize: 'clamp(2.2rem, 7vw, 6rem)',
-    fontFamily: '"Bebas Neue", sans-serif',
+    fontFamily: 'montserrat bold, sans-serif',
     WebkitBackgroundClip: 'text',
     WebkitTextFillColor: '#ffffff',
     margin: 0,
