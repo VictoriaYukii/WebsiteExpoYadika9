@@ -43,7 +43,7 @@ function App() {
     },
     { 
       id: 4, 
-      name: 'Minuman', 
+      name: 'Minuman Herbal', 
       categories: ['Home', 'All'],
       image: Minuman, 
       liked: true,
@@ -59,7 +59,7 @@ function App() {
     },
     { 
       id: 6, 
-      name: 'Kipas', 
+      name: 'Kipas Custom Design', 
       categories: ['Home', 'All'],
       image: Kipas, 
       liked: false,

@@ -33,20 +33,36 @@ function CatalogPage({ products, categories, selectedCategory, setSelectedCatego
         .category-badge:hover { transform: scale(1.1); }
         .category-badge.active { transform: scale(1.15); }
       `}</style>
-      
+      <style>
+{`
+@keyframes floatChar {
+  0%   { transform: translateY(0); }
+  50%  { transform: translateY(-10px); }
+  100% { transform: translateY(0); }
+}
+`}
+</style>
 
 {/* Hero */}
 <div
   style={{
-    background: 'rgba(255,255,255,0.1)',
-    backdropFilter: 'blur(20px)',
+    background: 'linear-gradient(135deg, #c084fc, #a78bfa)',
     borderBottom: '2px solid rgba(255,255,255,0.2)',
     padding: '40px 20px',
     animation: 'fadeInUp 0.8s ease'
   }}
 >
-  <div style={{ maxWidth: '720px', margin: '0 auto', textAlign: 'center' }}>
 
+  {/* CONTENT */}
+  <div
+    style={{
+      position: 'relative',
+      zIndex: 2,
+      maxWidth: '720px',
+      margin: '0 auto',
+      textAlign: 'center'
+    }}
+  >
 {/* Title + Logo */}
 <div
   style={{
@@ -69,21 +85,38 @@ function CatalogPage({ products, categories, selectedCategory, setSelectedCatego
   />
 
   {/* Judul */}
-  <h1
-    style={{
-      fontSize: 'clamp(2.2rem, 6vw, 5.5rem)',
-      fontFamily: '"Bebas Neue", sans-serif',
-      background: 'linear-gradient(45deg, #fff, #ffd6ff, #e7c6ff)',
-      WebkitBackgroundClip: 'text',
-      WebkitTextFillColor: 'transparent',
-      margin: 0,
-      letterSpacing: '0.04em',
-      textShadow: '0 4px 20px rgba(0,0,0,0.3)',
-      whiteSpace: 'nowrap'
-    }}
-  >
-    SMK YADIKA 9
-  </h1>
+ <h1
+  style={{
+    fontSize: 'clamp(2.2rem, 7vw, 6rem)',
+    fontFamily: '"Bebas Neue", sans-serif',
+    background: 'linear-gradient(45deg, #fff, #ffd6ff, #e7c6ff)',
+    WebkitBackgroundClip: 'text',
+    WebkitTextFillColor: '#ffffff',
+    margin: 0,
+    letterSpacing: '0.04em',
+    textShadow: '0 4px 20px rgba(0,0,0,0.3)',
+    whiteSpace: 'nowrap',
+    lineHeight: 1,
+    display: 'flex',
+    justifyContent: 'center',
+    filter: 'none',
+    opacity: 1
+  }}
+>
+  {'SMK YADIKA 9'.split('').map((char, i) => (
+    <span
+      key={i}
+      style={{
+        display: 'inline-block',
+        animation: 'floatChar 4s ease-in-out infinite',
+        animationDelay: `${i * 0.12}s`
+      }}
+    >
+      {char === ' ' ? '\u00A0' : char}
+    </span>
+  ))}
+</h1>
+
 
   {/* Logo kanan */}
   <div style={{ display: 'flex', gap: '6px' }}>
