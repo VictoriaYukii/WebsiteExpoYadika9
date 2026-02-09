@@ -8,6 +8,7 @@ import Kipas from './Images/kipas.png';
 import Manik from './Images/manik.png';
 import Minuman from './Images/minuman.png';
 import calendar from './Images/calendarcustom.jpg';
+import ganci from './Images/ganci.jpeg';
 
 function App() {
   const categories = [
@@ -129,6 +130,22 @@ function App() {
       ],
       targetPasar: 'para pengguna kipas angin yang ingin memiliki kipas dengan desain unik sesuai selera mereka.',
     },
+    {
+      id: 7,
+      name: 'Gantungan Kunci Custom',
+      categories: ['Fashion', 'All'],
+      image: ganci,
+      liked: false,
+      detail: 'Gantungan kunci yang terbuat dari tutup botol bekas yang dibentuk dan dihias sesuai keinginan.',
+      bahan: [
+        'Tutup Botol Bekas',
+        'Kertas Baking Sheet (Untuk lapisan menahan panas saat membentuk tutup botol)',
+        'Gantungan Kunci Polos',
+        'Lem Perekat (Untuk Menempelkan Desain pada Tutup Botol)',
+      ],
+      targetPasar: 'Individu yang menyukai aksesori unik dan personalisasi barang-barang sehari-hari dan pecinta kerajinan tangan.',
+
+    }
   ];
 
   const [selectedCategory, setSelectedCategory] = useState('All');
