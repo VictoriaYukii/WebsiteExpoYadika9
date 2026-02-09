@@ -88,8 +88,7 @@ function App() {
         'Air ± 1 liter'
       ],
       targetPasar: [
-        'Gen X & Millenial : Fokus pada khasiat kontrol gula darah dan kolesterol (Andaliman & Kayu Manis)',
-        'Gen Z & Gen Alpha : Fokus pada visual warna telang yang aesthetic dan pengalaman rasa unik "Getar" andaliman'
+        'Gen X & Millenial akan Fokus pada khasiat kontrol gula darah dan kolesterol (Andaliman & Kayu Manis), sementara Gen Z & Gen Alpha  Fokus pada visual warna telang yang aesthetic dan pengalaman rasa unik "Getar" andaliman'
       ],
       manfaat: [
         'Mengontrol Kadar Gula Darah: Kombinasi kayu manis dan andaliman secara klinis membantu meningkatkan sensitivitas insulin dan mengatur penyerapan glukosa',
