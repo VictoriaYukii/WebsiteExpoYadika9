@@ -7,6 +7,7 @@ import BantalImg from './Images/bantal.png';
 import Kipas from './Images/kipas.png';
 import Manik from './Images/manik.png';
 import Minuman from './Images/minuman.png';
+import calendar from './Images/calendarcustom.jpg';
 
 function App() {
   const categories = [
@@ -34,11 +35,15 @@ function App() {
       id: 2,
       name: 'Kalender Bertema',
       categories: ['Home', 'All'],
-      image: 'https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=400',
+      image: calendar,
       liked: false,
       detail: 'Kalender kreatif dengan desain menarik, bisa untuk catatan harian atau dekorasi meja.',
-      bahan: '-',
-      targetPasar: 'Test tulisan',
+      bahan: [
+        'Kertas Glossy A4',
+        'Spiral Binding',
+        'Stand Kalender',
+      ],
+      targetPasar: 'Target pasarnya adalah individu yang menyukai perencanaan dan organisasi, serta mereka yang menghargai desain estetis dalam barang-barang sehari-hari.',
     },
     {
       id: 3,
@@ -76,7 +81,7 @@ function App() {
       categories: ['Home', 'All'],
       image: Minuman,
       liked: true,
-      description: 'Minuman herbal yang menyegarkan dan menyehatkan, terbuat dari bahan alami pilihan.',
+      detail: 'Minuman herbal yang menyegarkan dan menyehatkan, terbuat dari bahan alami pilihan.',
       bahan: [
         'Bunga Telang 50 lembar',
         'Andaliman 30 gram',
@@ -107,10 +112,8 @@ function App() {
       categories: ['Fashion', 'All'],
       image: Manik,
       liked: false,
-      description: 'Gantungan kunci buatan tangan, unik dan cocok dijadikan hadiah.',
-      bahan: '-',
-      targetPasar: '-',
-      manfaat: '-',
+      detail: 'Gantungan kunci buatan tangan, unik dan cocok dijadikan hadiah.',
+      targetPasar: 'Target pasarnya merupakan individu yang menyukai aksesori unik dan personalisasi barang-barang sehari-hari, seperti remaja, anak muda, dan pecinta kerajinan tangan.',
     },
     {
       id: 6,
