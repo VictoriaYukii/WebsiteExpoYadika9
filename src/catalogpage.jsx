@@ -181,7 +181,6 @@ function CatalogPage({ products, categories, selectedCategory, setSelectedCatego
         letterSpacing: '0.08em',
         textShadow: '0 6px 18px rgba(0,0,0,0.3)',
         color: 'rgba(255,255,255,0.95)',
-        letterSpacing: '0.08em'
       }}
     >
       EXPO HUT 50 YADIKA PAMOR

@@ -3,7 +3,13 @@ import { useParams, useNavigate, useLocation } from 'react-router-dom';
 import { Heart } from 'lucide-react';
 import gedung from './Images/gedung.jpeg';
 
-const TAB_ORDER = ['detail', 'bahan', 'target', 'manfaat'];
+const TAB_CONFIG = {
+  detail: { label: 'Detail', type: 'text' },
+  bahan: { label: 'Bahan', type: 'list' },
+  targetPasar: { label: 'Target Pasar', type: 'text' },
+  manfaat: { label: 'Manfaat', type: 'list' },
+  varian: { label: 'Varian', type: 'list' }
+};
 
 function ProductDetail({ products }) {
   const { id, tab = 'detail' } = useParams();
@@ -19,8 +25,8 @@ function ProductDetail({ products }) {
   const changeTab = (nextTab) => {
     if (nextTab === tab) return;
 
-    const currentIndex = TAB_ORDER.indexOf(tab);
-    const nextIndex = TAB_ORDER.indexOf(nextTab);
+    const currentIndex = Object.keys(TAB_CONFIG).indexOf(tab);
+    const nextIndex = Object.keys(TAB_CONFIG).indexOf(nextTab);
 
     setAnimClass(nextIndex > currentIndex ? 'slide-left' : 'slide-right');
 
@@ -35,9 +41,16 @@ function ProductDetail({ products }) {
 
   const handleBack = () => navigate('/', { replace: true });
 
+
   useEffect(() => {
-    setAnimClass('slide-in');
-  }, [tab]);
+  if (!availableTabs.includes(tab)) {
+    navigate(`/product/${id}/${availableTabs[0]}`, { replace: true });
+  }
+}, [tab]);
+
+  const availableTabs = Object.keys(TAB_CONFIG).filter(
+  key => product[key]
+);
 
   return (
     <div
@@ -102,13 +115,14 @@ function ProductDetail({ products }) {
             fontFamily: '"Anton", sans-serif',
             fontSize: 'clamp(1.8rem, 7vw, 4.2rem)',
             marginBottom: '32px',
+            color: 'white',
             letterSpacing: '0.05em',
             textTransform: 'uppercase',
             lineHeight: 1.15,
             padding: '0 16px',
             wordBreak: 'break-word',
             overflowWrap: 'anywhere',
-            textShadow: '0 10px 22px rgba(0,0,0,0.5)'
+            textShadow: '0 10px 22px rgb(255, 255, 255)'
           }}
         >
           {product.name}
@@ -160,51 +174,57 @@ function ProductDetail({ products }) {
           {/* CONTENT */}
           <div style={{ flex: 1 }}>
             {/* TABS */}
-            <div style={{ display: 'flex', gap: '12px', marginBottom: '25px', flexWrap: 'wrap' }}>
-              {[
-                ['detail', 'Detail'],
-                ['bahan', 'Bahan'],
-                ['target', 'Target Pasar'],
-                ['manfaat', 'Manfaat']
-              ].map(([key, label]) => (
-                <button
-                  key={key}
-                  onClick={() => changeTab(key)}
-                  style={{
-                    padding: '12px 22px',
-                    borderRadius: '12px',
-                    border: 'none',
-                    fontWeight: '700',
-                    cursor: 'pointer',
-                    background:
-                      tab === key
-                        ? 'linear-gradient(135deg,#667eea,#764ba2)'
-                        : 'rgba(255,255,255,0.9)',
-                    color: tab === key ? 'white' : '#333'
-                  }}
-                >
-                  {label}
-                </button>
-              ))}
-            </div>
+          <div style={{ display: 'flex', gap: '12px', marginBottom: '25px', flexWrap: 'wrap' }}>
+  {availableTabs.map(key => (
+    <button
+      key={key}
+      onClick={() => changeTab(key)}
+      style={{
+        padding: '12px 22px',
+        borderRadius: '12px',
+        border: 'none',
+        fontWeight: '700',
+        cursor: 'pointer',
+        background:
+          tab === key
+            ? 'linear-gradient(135deg,#667eea,#764ba2)'
+            : 'rgba(255,255,255,0.9)',
+        color: tab === key ? 'white' : '#333'
+      }}
+    >
+      {TAB_CONFIG[key].label}
+    </button>
+  ))}
+</div>
+
 
             {/* TAB CONTENT */}
-            <div
-              key={tab}
-              className={animClass}
-              style={{
-                background: 'rgba(255, 255, 255, 0.96)',
-                color: '#333',
-                padding: '25px',
-                borderRadius: '16px',
-                minHeight: '160px'
-              }}
-            >
-              {tab === 'detail' && <p>{product.description}</p>}
-              {tab === 'bahan' && <p>{product.bahan || 'Belum tersedia'}</p>}
-              {tab === 'target' && <p>{product.targetPasar || 'Belum tersedia'}</p>}
-              {tab === 'manfaat' && <p>{product.manfaat || 'Belum tersedia'}</p>}
-            </div>
+          <div
+  key={tab}
+  className={animClass}
+  style={{
+    background: 'rgba(255,255,255,0.96)',
+    color: '#333',
+    padding: '25px',
+    borderRadius: '16px',
+    minHeight: '160px'
+  }}
+>
+  {TAB_CONFIG[tab]?.type === 'text' && (
+    <div style={{ lineHeight: 1.7, whiteSpace: 'pre-line' }}>
+      {product[tab]}
+    </div>
+  )}
+
+  {TAB_CONFIG[tab]?.type === 'list' && Array.isArray(product[tab]) && (
+    <ul style={{ paddingLeft: '20px', lineHeight: 1.8 }}>
+      {product[tab].map((item, i) => (
+        <li key={i}>{item}</li>
+      ))}
+    </ul>
+  )}
+</div>
+
 
             {/* BACK */}
             <button
