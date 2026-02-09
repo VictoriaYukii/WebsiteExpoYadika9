@@ -72,8 +72,7 @@ function App() {
       ],
       manfaat: [
         'Membantu penyandang tunanetra dalam navigasi dan deteksi rintangan di sekitarnya.',
-        'Membantu mendeteksi lubang jalan, got, atau penurunan permukaan yang berbahaya.',
-        'Mengurangi resiko terjatuh atau terpeleset',
+        'Mengurangi resiko kecelakaan seperti tabrakan dengan objek atau orang lain.',
       ],
     },
     {
